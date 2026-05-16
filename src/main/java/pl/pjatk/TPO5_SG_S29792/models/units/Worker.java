@@ -1,4 +1,4 @@
-package pl.pjatk.TPO5_SG_S29792.models;
+package pl.pjatk.TPO5_SG_S29792.models.units;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;

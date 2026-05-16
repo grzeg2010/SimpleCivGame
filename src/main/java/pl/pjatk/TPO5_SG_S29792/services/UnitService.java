@@ -2,7 +2,7 @@ package pl.pjatk.TPO5_SG_S29792.services;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import pl.pjatk.TPO5_SG_S29792.models.Unit;
+import pl.pjatk.TPO5_SG_S29792.models.units.Unit;
 import pl.pjatk.TPO5_SG_S29792.repositories.UnitRepository;
 
 import java.util.List;

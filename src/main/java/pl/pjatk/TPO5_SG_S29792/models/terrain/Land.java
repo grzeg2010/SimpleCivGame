@@ -1,8 +1,9 @@
-package pl.pjatk.TPO5_SG_S29792.models;
+package pl.pjatk.TPO5_SG_S29792.models.terrain;
 
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pl.pjatk.TPO5_SG_S29792.models.units.Unit;
 
 @Entity
 @DiscriminatorValue("LAND")
