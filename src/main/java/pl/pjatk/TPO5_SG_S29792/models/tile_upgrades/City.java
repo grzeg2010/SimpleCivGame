@@ -1,4 +1,4 @@
-package pl.pjatk.TPO5_SG_S29792.models.terrain_upgrades;
+package pl.pjatk.TPO5_SG_S29792.models.tile_upgrades;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
@@ -10,7 +10,7 @@ import pl.pjatk.TPO5_SG_S29792.models.Civilization;
 @DiscriminatorValue("CITY")
 @Getter @Setter
 @NoArgsConstructor
-public class City extends TerrainUpgrade {
+public class City extends TileUpgrade {
     private int growthPoints;
     private int size;
 

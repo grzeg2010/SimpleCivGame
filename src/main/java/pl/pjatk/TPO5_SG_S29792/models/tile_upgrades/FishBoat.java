@@ -1,8 +1,7 @@
-package pl.pjatk.TPO5_SG_S29792.models.terrain_upgrades;
+package pl.pjatk.TPO5_SG_S29792.models.tile_upgrades;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,7 +10,7 @@ import lombok.Setter;
 @DiscriminatorValue("FISH_BOAT")
 @Getter @Setter
 @NoArgsConstructor
-public class FishBoat extends TerrainUpgrade {
+public class FishBoat extends TileUpgrade {
     @Override
     public boolean isWaterUpgrade() { return true; }
 

@@ -1,7 +1,6 @@
-package pl.pjatk.TPO5_SG_S29792.models.terrain_upgrades;
+package pl.pjatk.TPO5_SG_S29792.models.tile_upgrades;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +11,7 @@ import pl.pjatk.TPO5_SG_S29792.models.terrain.TerrainId;
 @DiscriminatorColumn(name = "upgrade_type")
 @Getter @Setter
 @NoArgsConstructor
-public class TerrainUpgrade {
+public class TileUpgrade {
     @EmbeddedId
     private TerrainId id;
 
