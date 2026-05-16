@@ -8,8 +8,7 @@ import pl.pjatk.TPO5_SG_S29792.models.Civilization;
 
 @Entity
 @DiscriminatorValue("CITY")
-@Getter
-@Setter
+@Getter @Setter
 @NoArgsConstructor
 public class City extends TerrainUpgrade {
     private int growthPoints;

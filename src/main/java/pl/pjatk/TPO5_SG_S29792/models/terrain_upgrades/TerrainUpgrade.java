@@ -2,13 +2,15 @@ package pl.pjatk.TPO5_SG_S29792.models.terrain_upgrades;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import pl.pjatk.TPO5_SG_S29792.models.terrain.Terrain;
 import pl.pjatk.TPO5_SG_S29792.models.terrain.TerrainId;
 
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "upgrade_type")
-@Data
+@Getter @Setter
 @NoArgsConstructor
 public class TerrainUpgrade {
     @EmbeddedId
