@@ -10,5 +10,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Settler extends Unit {
-
+    @Override
+    public boolean canWalk() { return true; }
 }

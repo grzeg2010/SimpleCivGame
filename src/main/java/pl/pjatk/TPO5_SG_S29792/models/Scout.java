@@ -9,6 +9,13 @@ import lombok.NoArgsConstructor;
 @DiscriminatorValue("SCOUT")
 @Data
 @NoArgsConstructor
-public class Scout {
+public class Scout extends Unit {
+    @Override
+    public boolean canSwim() { return true; }
 
+    @Override
+    public boolean canWalk() { return true; }
+
+    @Override
+    public int getMovementRange() { return 2; }
 }

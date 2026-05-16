@@ -11,4 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Warrior extends Unit {
     private int strength;
+
+    @Override
+    public boolean canWalk() { return true; }
 }

@@ -4,8 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@MappedSuperclass
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "unit_type")
 @Data
 @NoArgsConstructor
@@ -14,6 +13,10 @@ public class Unit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String type;
-    private int movesPerTurn;
+    private int posX;
+    private int posY;
+
+    public boolean canSwim() { return false; }
+    public boolean canWalk() { return false; }
+    public int getMovementRange() { return 1; }
 }
