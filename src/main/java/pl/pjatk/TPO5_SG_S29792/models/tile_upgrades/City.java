@@ -4,6 +4,7 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import lombok.*;
+import pl.pjatk.TPO5_SG_S29792.enums.TileUpgrades;
 import pl.pjatk.TPO5_SG_S29792.models.Civilization;
 
 @Entity
@@ -31,6 +32,9 @@ public class City extends TileUpgrade {
     public int getProductionCost() {
         return 3;
     }
+
+    @Override
+    public TileUpgrades getType() { return TileUpgrades.CITY; }
 
     public void increaseGrowthPoints() {
         if (civilization.getFoodPoints() > 0) {

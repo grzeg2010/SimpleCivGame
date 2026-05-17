@@ -6,3 +6,8 @@ INSERT INTO warrior VALUES (2);
 
 INSERT INTO unit(unit_type, posX, posY) VALUES ('SCOUT', 2,2);
 INSERT INTO scout VALUES (3);
+
+INSERT INTO terrain VALUES (0,0,'SEA');
+INSERT INTO terrain VALUES (0,1,'LAND');
+INSERT INTO terrain VALUES (1,0,'MOUNTAIN');
+INSERT INTO terrain VALUES (1,1,'LAND');

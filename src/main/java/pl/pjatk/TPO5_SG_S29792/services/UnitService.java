@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pl.pjatk.TPO5_SG_S29792.dto.GetUnitResponse;
-import pl.pjatk.TPO5_SG_S29792.dto.UnitOrderRequest;
 import pl.pjatk.TPO5_SG_S29792.enums.UnitType;
 import pl.pjatk.TPO5_SG_S29792.models.units.*;
 import pl.pjatk.TPO5_SG_S29792.repositories.UnitRepository;
@@ -15,19 +14,19 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class UnitService {
-    private final UnitRepository repo;
+    private final UnitRepository unitRepository;
 
     private Unit findById(Long id) {
-        return repo
+        return unitRepository
                 .findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Unit not found"));
     }
 
     public List<GetUnitResponse> getAll(String sort) {
-        List<Unit> units = repo.findAll(Sort.by(sort));
+        List<Unit> units = unitRepository.findAll(Sort.by(sort));
         List<GetUnitResponse> unitsDtos = new ArrayList<>();
 
-        units.forEach((unit) -> {
+        units.forEach(unit -> {
             unitsDtos.add(new GetUnitResponse(
                     unit.getId(),
                     unit.getType(),
@@ -53,7 +52,7 @@ public class UnitService {
         unit.setPosX(posX);
         unit.setPosY(posY);
 
-        unit = repo.save(unit);
+        unit = unitRepository.save(unit);
 
         return new GetUnitResponse(
                 unit.getId(),
@@ -72,10 +71,10 @@ public class UnitService {
         unit.setPosX(targetX);
         unit.setPosY(targetY);
 
-        repo.save(unit);
+        unitRepository.save(unit);
     }
 
     public void deleteUnit(Long id) {
-        repo.delete(findById(id));
+        unitRepository.delete(findById(id));
     }
 }

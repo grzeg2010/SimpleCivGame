@@ -21,7 +21,7 @@ public class UnitController {
 
     @GetMapping("/unit")
     public List<GetUnitResponse> getUnits(
-            @RequestParam(defaultValue = "name") String sort
+            @RequestParam(defaultValue = "id") String sort
     ) {
         return unitService.getAll(sort);
     }

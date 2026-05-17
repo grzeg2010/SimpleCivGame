@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.pjatk.TPO5_SG_S29792.enums.TileUpgrades;
 
 @Entity
 @DiscriminatorValue("MILL")
@@ -19,4 +20,7 @@ public class Mill extends TileUpgrade {
 
     @Override
     public int getProductionCost() { return 1; }
+
+    @Override
+    public TileUpgrades getType() { return TileUpgrades.MILL; }
 }
