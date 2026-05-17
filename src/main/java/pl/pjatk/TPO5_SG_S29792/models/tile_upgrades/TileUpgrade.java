@@ -13,14 +13,18 @@ import pl.pjatk.TPO5_SG_S29792.models.terrain.TerrainId;
 @Getter @Setter
 @NoArgsConstructor
 public class TileUpgrade {
-    @EmbeddedId
-    private TerrainId id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private int foodBonus;
     private int productionBonus;
 
     @OneToOne
-    @MapsId
+    @JoinColumns({
+            @JoinColumn(name = "terrain_pos_x", referencedColumnName = "posX"),
+            @JoinColumn(name = "terrain_pos_y", referencedColumnName = "posY")
+    })
     private Terrain terrain;
 
     public boolean isLandUpgrade() {return false;}
