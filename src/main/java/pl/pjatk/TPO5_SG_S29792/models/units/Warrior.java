@@ -6,14 +6,18 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.pjatk.TPO5_SG_S29792.enums.UnitType;
 
 @Entity
 @DiscriminatorValue("WARRIOR")
 @Getter @Setter
 @NoArgsConstructor
 public class Warrior extends Unit {
-    private int strength;
-
     @Override
     public boolean canWalk() { return true; }
+
+    @Override
+    public UnitType getType() {
+        return UnitType.WARRIOR;
+    }
 }

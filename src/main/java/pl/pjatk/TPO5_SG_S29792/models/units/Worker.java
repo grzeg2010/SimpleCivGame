@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.pjatk.TPO5_SG_S29792.enums.UnitType;
 
 @Entity
 @DiscriminatorValue("WORKER")
@@ -20,4 +21,9 @@ public class Worker extends Unit {
 
     @Override
     public int getMovementRange() { return 2; }
+
+    @Override
+    public UnitType getType() {
+        return UnitType.WORKER;
+    }
 }
