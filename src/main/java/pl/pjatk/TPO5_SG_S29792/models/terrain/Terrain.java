@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.pjatk.TPO5_SG_S29792.enums.TerrainType;
+import pl.pjatk.TPO5_SG_S29792.enums.TileUpgrades;
 import pl.pjatk.TPO5_SG_S29792.models.tile_upgrades.TileUpgrade;
 import pl.pjatk.TPO5_SG_S29792.models.units.Unit;
 
@@ -20,4 +22,5 @@ public class Terrain {
     private TileUpgrade tileUpgrade;
 
     public boolean isPassableBy(Unit unit) { return false; }
+    public TerrainType getType() { return null; }
 }
