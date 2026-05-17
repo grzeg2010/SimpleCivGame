@@ -1,21 +1,81 @@
 package pl.pjatk.TPO5_SG_S29792.services;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import pl.pjatk.TPO5_SG_S29792.models.units.Unit;
+import pl.pjatk.TPO5_SG_S29792.dto.GetUnitResponse;
+import pl.pjatk.TPO5_SG_S29792.dto.UnitOrderRequest;
+import pl.pjatk.TPO5_SG_S29792.enums.UnitType;
+import pl.pjatk.TPO5_SG_S29792.models.units.*;
 import pl.pjatk.TPO5_SG_S29792.repositories.UnitRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class UnitService {
     private final UnitRepository repo;
 
-    public UnitService(UnitRepository repo) {
-        this.repo = repo;
+    private Unit findById(Long id) {
+        return repo
+                .findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Unit not found"));
     }
 
-    public List<Unit> getAll(String sort) {
-        return repo.findAll(Sort.by(sort));
+    public List<GetUnitResponse> getAll(String sort) {
+        List<Unit> units = repo.findAll(Sort.by(sort));
+        List<GetUnitResponse> unitsDtos = new ArrayList<>();
+
+        units.forEach((unit) -> {
+            unitsDtos.add(new GetUnitResponse(
+                    unit.getId(),
+                    unit.getType(),
+                    unit.getPosX(),
+                    unit.getPosY(),
+                    unit.getMovementRange(),
+                    unit.canSwim(),
+                    unit.canWalk()
+            ));
+        });
+
+        return unitsDtos;
+    }
+
+    public GetUnitResponse createUnit(UnitType type, int posX, int posY) {
+        Unit unit = switch (type) {
+            case SCOUT -> new Scout();
+            case SETTLER -> new Settler();
+            case WARRIOR -> new Warrior();
+            case WORKER -> new Worker();
+        };
+
+        unit.setPosX(posX);
+        unit.setPosY(posY);
+
+        unit = repo.save(unit);
+
+        return new GetUnitResponse(
+                unit.getId(),
+                unit.getType(),
+                unit.getPosX(),
+                unit.getPosY(),
+                unit.getMovementRange(),
+                unit.canSwim(),
+                unit.canWalk()
+        );
+    }
+
+    public void moveUnit(Long id, int targetX, int targetY) {
+        Unit unit = findById(id);
+
+        unit.setPosX(targetX);
+        unit.setPosY(targetY);
+
+        repo.save(unit);
+    }
+
+    public void deleteUnit(Long id) {
+        repo.delete(findById(id));
     }
 }

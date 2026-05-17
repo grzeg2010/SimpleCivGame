@@ -5,4 +5,4 @@ import org.springframework.stereotype.Repository;
 import pl.pjatk.TPO5_SG_S29792.models.units.Unit;
 
 @Repository
-public interface UnitRepository extends JpaRepository<Unit, Integer>{}
+public interface UnitRepository extends JpaRepository<Unit, Long>{}
