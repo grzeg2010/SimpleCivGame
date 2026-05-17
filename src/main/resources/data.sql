@@ -1,3 +1,8 @@
-INSERT INTO unit (name) VALUES ('Settler');
-INSERT INTO unit (name) VALUES ('Warrior');
-INSERT INTO unit (name) VALUES ('Scout');
+INSERT INTO unit VALUES (0,0);
+-- INSERT INTO settler VALUES (1);
+
+INSERT INTO unit VALUES (0,1);
+-- INSERT INTO warrior VALUES (2);
+
+INSERT INTO unit VALUES (2,2);
+-- INSERT INTO scout VALUES (3);
