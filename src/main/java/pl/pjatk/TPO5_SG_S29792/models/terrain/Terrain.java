@@ -7,6 +7,7 @@ import lombok.Setter;
 import pl.pjatk.TPO5_SG_S29792.models.tile_upgrades.TileUpgrade;
 import pl.pjatk.TPO5_SG_S29792.models.units.Unit;
 
+@Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "terrain_type")
 @Getter @Setter

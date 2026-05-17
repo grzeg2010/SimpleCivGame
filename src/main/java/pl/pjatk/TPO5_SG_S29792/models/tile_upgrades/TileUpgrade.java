@@ -7,6 +7,7 @@ import lombok.Setter;
 import pl.pjatk.TPO5_SG_S29792.models.terrain.Terrain;
 import pl.pjatk.TPO5_SG_S29792.models.terrain.TerrainId;
 
+@Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "upgrade_type")
 @Getter @Setter
