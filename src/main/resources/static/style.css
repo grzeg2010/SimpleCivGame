@@ -4,10 +4,12 @@ body {
 
 #play-grid {
     margin: auto;
+    width: min-content;
 }
 
 .tile-row {
     display: flex;
+    width: min-content;
 }
 
 .play-tile {
@@ -28,6 +30,18 @@ body {
 
 .play-tile.sea {
     background-color: skyblue;
+}
+
+.play-tile.reachable {
+    background-color: darkblue !important;
+}
+
+.play-tile.target {
+    background-color: steelblue !important;
+}
+
+.unit.selected {
+    outline: 3px solid white;
 }
 
 .unit {
