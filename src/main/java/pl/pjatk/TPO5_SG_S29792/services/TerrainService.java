@@ -34,7 +34,7 @@ public class TerrainService {
                     tile.getId().getPosX(),
                     tile.getId().getPosY(),
                     tile.getType(),
-                    null // TODO complete
+                    tile.getTileUpgrade() != null ? tile.getTileUpgrade().getType() : null
             ));
         });
 

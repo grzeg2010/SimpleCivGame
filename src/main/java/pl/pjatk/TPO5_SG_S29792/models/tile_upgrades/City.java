@@ -35,41 +35,4 @@ public class City extends TileUpgrade {
 
     @Override
     public TileUpgrades getType() { return TileUpgrades.CITY; }
-
-    public void increaseGrowthPoints() {
-        if (civilization.getFoodPoints() > 0) {
-            this.growthPoints += 1;
-
-            if (growthPoints == 6) {
-                increaseSize();
-                this.growthPoints = 0;
-            }
-        }
-    }
-
-    public void increaseSize() {
-        this.size += 1;
-
-        civilization.setFoodPoints(
-                civilization.getFoodPoints() - 1
-        );
-
-        super.setProductionBonus(
-                super.getProductionBonus() + 1
-        );
-
-        civilization.setProductionPoints(
-                civilization.getProductionPoints() + 1
-        );
-    }
-
-    public void deleteCity() {
-        civilization.setFoodPoints(
-                civilization.getFoodPoints() + this.getFoodCost() + this.size
-        );
-
-        civilization.setProductionPoints(
-                civilization.getProductionPoints() + this.getProductionCost() - this.getProductionBonus()
-        );
-    }
 }

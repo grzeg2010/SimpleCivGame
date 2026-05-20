@@ -8,6 +8,7 @@ import pl.pjatk.TPO5_SG_S29792.models.terrain.TerrainId;
 @Data
 @AllArgsConstructor
 public class GetTileUpgradeResponse {
+    private Long id;
     private int posX;
     private int posY;
     private TileUpgrades type;

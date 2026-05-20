@@ -1,6 +1,7 @@
 package pl.pjatk.TPO5_SG_S29792.services;
 
 import lombok.RequiredArgsConstructor;
+import org.jspecify.annotations.NonNull;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pl.pjatk.TPO5_SG_S29792.dto.GetUnitResponse;
@@ -16,7 +17,7 @@ import java.util.List;
 public class UnitService {
     private final UnitRepository unitRepository;
 
-    private Unit findById(Long id) {
+    public Unit findById(Long id) {
         return unitRepository
                 .findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Unit not found"));
@@ -27,15 +28,7 @@ public class UnitService {
         List<GetUnitResponse> unitsDtos = new ArrayList<>();
 
         units.forEach(unit -> {
-            unitsDtos.add(new GetUnitResponse(
-                    unit.getId(),
-                    unit.getType(),
-                    unit.getPosX(),
-                    unit.getPosY(),
-                    unit.getMovementRange(),
-                    unit.canSwim(),
-                    unit.canWalk()
-            ));
+            unitsDtos.add(mapGetUnitResponse(unit));
         });
 
         return unitsDtos;
@@ -54,6 +47,25 @@ public class UnitService {
 
         unit = unitRepository.save(unit);
 
+        return mapGetUnitResponse(unit);
+    }
+
+    public GetUnitResponse moveUnit(Long id, int targetX, int targetY) {
+        Unit unit = findById(id);
+
+        unit.setPosX(targetX);
+        unit.setPosY(targetY);
+
+        unitRepository.save(unit);
+
+        return mapGetUnitResponse(unit);
+    }
+
+    public void deleteUnit(Long id) {
+        unitRepository.delete(findById(id));
+    }
+
+    private static @NonNull GetUnitResponse mapGetUnitResponse(Unit unit) {
         return new GetUnitResponse(
                 unit.getId(),
                 unit.getType(),
@@ -63,18 +75,5 @@ public class UnitService {
                 unit.canSwim(),
                 unit.canWalk()
         );
-    }
-
-    public void moveUnit(Long id, int targetX, int targetY) {
-        Unit unit = findById(id);
-
-        unit.setPosX(targetX);
-        unit.setPosY(targetY);
-
-        unitRepository.save(unit);
-    }
-
-    public void deleteUnit(Long id) {
-        unitRepository.delete(findById(id));
     }
 }
