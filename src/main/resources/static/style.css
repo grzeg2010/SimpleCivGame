@@ -13,6 +13,7 @@ body {
 }
 
 .play-tile {
+    position: relative;
     display: inline-block;
     margin: 2px;
     width: 80px;
@@ -45,26 +46,39 @@ body {
 }
 
 .unit {
-    margin: 20px auto;
-    width: 25px;
-    height: 40px;
-    background-color: yellow;
+    margin: 10px auto;
+    width: 48px;
+    height: 56px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    image-rendering: auto;
 }
 
-.unit.scout {
-    background-color: saddlebrown;
-}
+.unit.warrior  { background-image: url('images/warrior.png'); }
+.unit.scout    { background-image: url('images/scout.png'); }
+.unit.settler  { background-image: url('images/Settler_(Civ5).webp'); }
+.unit.worker   { background-image: url('images/Worker_(Civ5).webp'); }
 
-.unit.settler {
-    background-color: olivedrab;
-}
+.play-tile.upgrade-farm::after      { background-image: url('images/Farm_(Civ5).webp'); }
+.play-tile.upgrade-mill::after      { background-image: url('images/Lumber_Mill_(Civ5).webp'); }
+.play-tile.upgrade-fish-boat::after { background-image: url('images/Fishing_Boats_(Civ5).webp'); }
 
-.unit.warrior {
-    background-color: brown;
-}
+.play-tile.upgrade-city { background-color: seagreen !important; }
+.play-tile.upgrade-city::after { background-image: url('images/Landmark_(Civ5).webp'); }
 
-.unit.worker {
-    background-color: darkgoldenrod;
+.play-tile[class*="upgrade-"]::after {
+    content: '';
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    width: 28px;
+    height: 28px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.9;
 }
 
 #unit-controls {
@@ -72,18 +86,78 @@ body {
     bottom: 0;
     left: 0;
     width: 200px;
-    height: 140px;
+    height: auto;
     background-color: slategray;
+    padding-bottom: 8px;
 }
 
 #unit-controls > #unit-name {
     width: 100%;
-    height: 50%;
+    height: 50px;
     background-color: cadetblue;
-    line-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
-    text-align: center;
     font-weight: 700;
+}
+
+#btn-units {
+    position: fixed;
+    top: 0;
+    right: 0;
+    border: none;
+    width: 100px;
+    height: 40px;
+    background-color: slategray;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#units-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 2px solid black;
+    padding: 12px;
+    z-index: 200;
+    min-width: 420px;
+}
+
+#units-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+#btn-close-units {
+    cursor: pointer;
+}
+
+#units-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#units-table th,
+#units-table td {
+    border: 1px solid black;
+    padding: 4px 8px;
+    text-align: left;
+}
+
+#units-table th {
+    cursor: pointer;
+    user-select: none;
+}
+
+#units-table th:hover {
+    background-color: #eee;
 }
 
 #btn-next-turn {

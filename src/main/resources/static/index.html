@@ -11,10 +11,47 @@
         <div id="unit-name">Unit name</div>
         <div id="unit-actions">
             <button id="btn-move">Move</button>
+            <button id="btn-found-city" hidden>Found City</button>
+            <button id="btn-build-farm" hidden>Build Farm</button>
+            <button id="btn-build-mill" hidden>Build Mill</button>
+            <button id="btn-build-boat" hidden>Build Boat</button>
+            <button id="btn-add-worker" hidden>Add Worker</button>
+            <button id="btn-add-warrior" hidden>Add Warrior</button>
+            <button id="btn-add-settler" hidden>Add Settler</button>
+            <button id="btn-add-scout" hidden>Add Scout</button>
             <button id="btn-delete">Delete</button>
         </div>
     </div>
     <button id="btn-next-turn">Next turn</button>
-    <script src="script.js"></script>
+    <button id="btn-units">Units</button>
+
+    <div id="units-modal" hidden>
+        <div id="units-modal-header">
+            <span>Units</span>
+            <button id="btn-close-units">X</button>
+        </div>
+        <table id="units-table">
+            <thead>
+                <tr>
+                    <th data-col="id">ID</th>
+                    <th data-col="type">Type</th>
+                    <th data-col="posX">X</th>
+                    <th data-col="posY">Y</th>
+                    <th data-col="movementRange">Move</th>
+                    <th data-col="canWalk">Walk</th>
+                    <th data-col="canSwim">Swim</th>
+                </tr>
+            </thead>
+            <tbody id="units-tbody"></tbody>
+        </table>
+    </div>
+    <script src="state.js"></script>
+    <script src="unit-selection.js"></script>
+    <script src="settler.js"></script>
+    <script src="worker.js"></script>
+    <script src="city-selection.js"></script>
+    <script src="turn.js"></script>
+    <script src="map.js"></script>
+    <script src="units-modal.js"></script>
 </body>
 </html>

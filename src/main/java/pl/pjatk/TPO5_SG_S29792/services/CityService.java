@@ -22,6 +22,7 @@ public class CityService {
 
     public void increaseGrowthPoints(Long id) {
         City city = (City) findTileById(id);
+        if (city.getCivilization() == null) return;
         if (city.getCivilization().getFoodPoints() > 0) {
             city.setGrowthPoints(city.getGrowthPoints() + 1);
 
@@ -55,6 +56,7 @@ public class CityService {
     public void deleteCity(Long id) {
         City city = (City) findTileById(id);
         Civilization civilization = city.getCivilization();
+        if (civilization == null) return;
         civilization.setFoodPoints(
                 civilization.getFoodPoints() + city.getFoodCost() + city.getSize()
         );
