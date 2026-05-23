@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cheat Console</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <style>
+        body { font-family: monospace; padding: 2rem; background: #050a0f; color: rgb(240,240,190); }
+        h2 { margin-top: 2rem; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 2rem; }
+        th, td { border: 1px solid rgb(240,200,130); padding: 6px 12px; text-align: left; }
+        th { background: rgb(10,45,40); }
+        input[type=number], select { width: 60px; background: #0d1f1a; color: rgb(240,240,190); border: 1px solid rgb(240,200,130); padding: 2px 4px; }
+        button { font-family: monospace; cursor: pointer; padding: 2px 8px; }
+        button[type=submit] { background: rgb(10,45,40); color: rgb(240,240,190); border: 1px solid rgb(240,200,130); }
+        button.delete { background: #3a0a0a; color: #ffaaaa; border: 1px solid #ff6666; }
+        fieldset { border: 1px solid rgb(240,200,130); padding: 1rem; margin-bottom: 2rem; display: inline-block; }
+        legend { color: rgb(240,200,130); padding: 0 6px; }
+        fieldset label { margin-right: 8px; }
+    </style>
+</head>
+<body>
+
+<h1>Cheat Console</h1>
+
+<!-- CREATE UNIT -->
+<fieldset>
+    <legend>Add Unit</legend>
+    <form th:action="@{/cheat-console/unit}" method="post">
+        <label>Type:
+            <select name="type">
+                <option th:each="t : ${unitTypes}" th:value="${t}" th:text="${t}"></option>
+            </select>
+        </label>
+        <label>X: <input type="number" name="posX" value="0" min="0"></label>
+        <label>Y: <input type="number" name="posY" value="0" min="0"></label>
+        <button type="submit">Create</button>
+    </form>
+</fieldset>
+
+<h2>Units</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th><th>Type</th><th>X</th><th>Y</th><th>Movement</th><th>Walk</th><th>Swim</th><th>Move to</th><th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="unit : ${units}">
+            <td th:text="${unit.id}"></td>
+            <td th:text="${unit.type}"></td>
+            <td th:text="${unit.posX}"></td>
+            <td th:text="${unit.posY}"></td>
+            <td th:text="${unit.movementRange}"></td>
+            <td th:text="${unit.canWalk}"></td>
+            <td th:text="${unit.canSwim}"></td>
+            <td>
+                <form th:action="@{/cheat-console/unit/{id}(id=${unit.id})}" method="post">
+                    <input type="hidden" name="_method" value="PUT">
+                    <input type="number" name="posX" th:value="${unit.posX}" min="0">
+                    <input type="number" name="posY" th:value="${unit.posY}" min="0">
+                    <button type="submit">Move</button>
+                </form>
+            </td>
+            <td>
+                <form th:action="@{/cheat-console/unit/{id}(id=${unit.id})}" method="post">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="delete">Delete</button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<fieldset>
+    <legend>Add Tile Upgrade</legend>
+    <form th:action="@{/cheat-console/tile-upgrade}" method="post">
+        <label>Type:
+            <select name="type">
+                <option th:each="t : ${upgradeTypes}" th:value="${t}" th:text="${t}"></option>
+            </select>
+        </label>
+        <label>X: <input type="number" name="posX" value="0" min="0"></label>
+        <label>Y: <input type="number" name="posY" value="0" min="0"></label>
+        <button type="submit">Create</button>
+    </form>
+</fieldset>
+
+<h2>Tile Upgrades</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th><th>Type</th><th>X</th><th>Y</th><th>Food</th><th>Production</th><th>Land</th><th>Water</th><th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="upgrade : ${upgrades}">
+            <td th:text="${upgrade.id}"></td>
+            <td th:text="${upgrade.type}"></td>
+            <td th:text="${upgrade.posX}"></td>
+            <td th:text="${upgrade.posY}"></td>
+            <td th:text="${upgrade.foodBonus}"></td>
+            <td th:text="${upgrade.productionBonus}"></td>
+            <td th:text="${upgrade.landUpgrade}"></td>
+            <td th:text="${upgrade.waterUpgrade}"></td>
+            <td>
+                <form th:action="@{/cheat-console/tile-upgrade/{id}(id=${upgrade.id})}" method="post">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="delete">Delete</button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Terrain</h2>
+<table>
+    <thead>
+        <tr>
+            <th>X</th><th>Y</th><th>Type</th><th>Upgrade</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="tile : ${tiles}">
+            <td th:text="${tile.posX}"></td>
+            <td th:text="${tile.posY}"></td>
+            <td th:text="${tile.terrainType}"></td>
+            <td th:text="${tile.upgradeType} ?: '-'"></td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

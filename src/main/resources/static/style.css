@@ -1,5 +1,6 @@
 body {
     height: 100vh;
+    background-color: rgb(240,240,220);
 }
 
 #play-grid {
@@ -87,19 +88,25 @@ body {
     left: 0;
     width: 200px;
     height: auto;
-    background-color: slategray;
+    background-color: rgb(20,25,26);
     padding-bottom: 8px;
 }
 
 #unit-controls > #unit-name {
     width: 100%;
     height: 50px;
-    background-color: cadetblue;
+    background-color: rgb(15,60,55);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: rgb(250,255,195);
     font-weight: 700;
+}
+
+#unit-controls button {
+    background-color: rgb(15,60,55);
+    border: 1px solid rgb(250,255,195);
+    color: rgb(250,255,195);
 }
 
 #btn-units {
@@ -109,8 +116,8 @@ body {
     border: none;
     width: 100px;
     height: 40px;
-    background-color: slategray;
-    color: white;
+    background-color: rgb(20,25,26);
+    color: rgb(250,255,195);
     font-weight: 700;
     cursor: pointer;
 }
@@ -120,8 +127,9 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: white;
-    border: 2px solid black;
+    background-color: rgb(20,25,26);
+    border: 2px solid rgb(250,255,195);
+    color: rgb(250,255,195);
     padding: 12px;
     z-index: 200;
     min-width: 420px;
@@ -146,7 +154,7 @@ body {
 
 #units-table th,
 #units-table td {
-    border: 1px solid black;
+    border: 1px solid rgb(250,255,195);
     padding: 4px 8px;
     text-align: left;
 }
@@ -157,7 +165,7 @@ body {
 }
 
 #units-table th:hover {
-    background-color: #eee;
+    background-color: #555;
 }
 
 #btn-next-turn {
@@ -167,8 +175,8 @@ body {
     border: none;
     width: 200px;
     height: 70px;
-    background-color: darkolivegreen;
-    color: white;
+    background-color: rgb(15,60,55);
+    color: rgb(250,255,195);
     text-transform: uppercase;
     font-weight: 700;
 }
