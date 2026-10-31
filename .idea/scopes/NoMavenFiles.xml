@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="NoMavenFiles" pattern="file:src//*&amp;&amp;!file:.mvn//*&amp;&amp;!file:mvnw&amp;&amp;!file:mvnw.cmd" />
+</component>

@@ -35,5 +35,6 @@ build/
 .DS_Store
 
 !.idea/copyright/
+!.idea/scopes/
 
 data/demo.mv.db
