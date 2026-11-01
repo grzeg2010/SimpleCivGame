@@ -52,5 +52,8 @@ At the bottom is a summary of terrain tiles:
 - tile type (land, sea, mountain)
 - tile upgrade (farm, mill, fish boat)
 
+### Dynamic documentation/API testing
+You can check all available HTTP requests and test them on http://localhost:9999/swagger-ui/index.html
+
 ## Reseting game
 To reset game state remove **.db** files from ```<PROJECT_ROOT>/data/```
