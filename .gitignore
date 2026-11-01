@@ -33,6 +33,8 @@ build/
 .vscode/
 
 .DS_Store
+.*.png
+.*.webp
 
 !.idea/copyright/
 !.idea/scopes/
