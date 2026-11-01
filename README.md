@@ -57,3 +57,6 @@ You can check all available HTTP requests and test them on http://localhost:9999
 
 ## Reseting game
 To reset game state remove **.db** files from ```<PROJECT_ROOT>/data/```
+
+## License
+Project is licensed under [GNU General Public License v3](https://www.gnu.org/licenses/gpl-3.0.html)
