@@ -31,7 +31,7 @@ import pl.pjatk.TPO5_SG_S29792.models.terrain.TerrainId;
 @DiscriminatorColumn(name = "upgrade_type")
 @Getter @Setter
 @NoArgsConstructor
-public class TileUpgrade {
+public abstract class TileUpgrade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

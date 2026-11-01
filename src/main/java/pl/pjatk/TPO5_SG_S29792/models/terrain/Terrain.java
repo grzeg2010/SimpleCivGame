@@ -32,7 +32,7 @@ import pl.pjatk.TPO5_SG_S29792.models.units.Unit;
 @DiscriminatorColumn(name = "terrain_type")
 @Getter @Setter
 @NoArgsConstructor
-public class Terrain {
+public abstract class Terrain {
     @EmbeddedId
     private TerrainId id;
 

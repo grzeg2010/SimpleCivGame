@@ -23,12 +23,12 @@ import lombok.*;
 import pl.pjatk.TPO5_SG_S29792.enums.UnitType;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "unit_type")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "unit_type", discriminatorType = DiscriminatorType.STRING)
 @Getter @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Unit {
+public abstract class Unit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
